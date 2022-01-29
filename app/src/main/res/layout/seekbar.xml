@@ -163,12 +163,12 @@
                     android:id="@+id/textMin4"
                     android:layout_width="wrap_content"
                     android:layout_height="wrap_content"
-                    android:text="400"
                     android:layout_below="@id/rangeSeekbar4"
-                    android:layout_marginTop="5dp"
                     android:layout_marginStart="10dp"
-                    android:textSize="16dp"
-                    android:textColor="#000"/>
+                    android:layout_marginTop="5dp"
+                    android:text="400"
+                    android:textColor="#000"
+                    android:textSize="16dp" />
 
                 <TextView
                     android:id="@+id/textMax4"
