@@ -139,8 +139,8 @@ public class Seekbar extends Fragment {
                 .setMinValue(400)
                 .setMaxValue(800)
                 .setSteps(100)
-                .setThumbDrawable(R.drawable.thumb_android)
-                .setThumbHighlightDrawable(R.drawable.thumb_android_pressed)
+                .setThumbDrawable(R.drawable.ic_android_black_24dp)
+                .setThumbHighlightDrawable(R.drawable.ic_android_black_24dp)
                 .setDataType(CrystalRangeSeekbar.DataType.INTEGER)
                 .apply();
 

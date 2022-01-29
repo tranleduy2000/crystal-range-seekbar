@@ -190,10 +190,10 @@ public class RangeSeekbar extends Fragment {
                 .setMinValue(400)
                 .setMaxValue(800)
                 .setSteps(100)
-                .setLeftThumbDrawable(R.drawable.thumb_android)
-                .setLeftThumbHighlightDrawable(R.drawable.thumb_android_pressed)
-                .setRightThumbDrawable(R.drawable.thumb_android)
-                .setRightThumbHighlightDrawable(R.drawable.thumb_android_pressed)
+                .setLeftThumbDrawable(R.drawable.ic_android_black_24dp)
+                .setLeftThumbHighlightDrawable(R.drawable.ic_android_black_24dp)
+                .setRightThumbDrawable(R.drawable.ic_android_black_24dp)
+                .setRightThumbHighlightDrawable(R.drawable.ic_android_black_24dp)
                 .setDataType(CrystalRangeSeekbar.DataType.INTEGER)
                 .apply();
 

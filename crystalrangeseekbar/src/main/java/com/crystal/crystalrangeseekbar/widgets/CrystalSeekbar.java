@@ -2,14 +2,12 @@ package com.crystal.crystalrangeseekbar.widgets;
 
 import android.content.Context;
 import android.content.res.TypedArray;
-import android.graphics.Bitmap;
 import android.graphics.Canvas;
 import android.graphics.Color;
 import android.graphics.LinearGradient;
 import android.graphics.Paint;
 import android.graphics.RectF;
 import android.graphics.Shader;
-import android.graphics.drawable.BitmapDrawable;
 import android.graphics.drawable.Drawable;
 import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
@@ -101,8 +99,8 @@ public class CrystalSeekbar extends View {
     private float thumbDiameter;
     private Drawable thumbDrawable;
     private Drawable thumbDrawablePressed;
-    private Bitmap thumb;
-    private Bitmap thumbPressed;
+    private Drawable thumb;
+    private Drawable thumbPressed;
     private Thumb pressedThumb;
     private double normalizedMinValue = 0d;
     private double normalizedMaxValue = 100d;
@@ -296,7 +294,7 @@ public class CrystalSeekbar extends View {
         return this;
     }
 
-    public CrystalSeekbar setThumbBitmap(Bitmap bitmap) {
+    public CrystalSeekbar setThumbBitmap(Drawable bitmap) {
         thumb = bitmap;
         return this;
     }
@@ -311,7 +309,7 @@ public class CrystalSeekbar extends View {
         return this;
     }
 
-    public CrystalSeekbar setThumbHighlightBitmap(Bitmap bitmap) {
+    public CrystalSeekbar setThumbHighlightBitmap(Drawable bitmap) {
         thumbPressed = bitmap;
         return this;
     }
@@ -398,11 +396,11 @@ public class CrystalSeekbar extends View {
     }
 
     public float getThumbWidth() {
-        return (thumb != null) ? thumb.getWidth() : getThumbDiameter();
+        return (thumb != null) ? thumb.getIntrinsicWidth() : getThumbDiameter();
     }
 
     public float getThumbHeight() {
-        return (thumb != null) ? thumb.getHeight() : getThumbDiameter();
+        return (thumb != null) ? thumb.getIntrinsicHeight() : getThumbDiameter();
     }
 
     protected float getThumbDiameter() {
@@ -417,7 +415,7 @@ public class CrystalSeekbar extends View {
         return typedArray.getDimensionPixelSize(R.styleable.CrystalSeekbar_thumb_diameter, getResources().getDimensionPixelSize(R.dimen.thumb_height));
     }
 
-    protected boolean isSeekBarTouchEnabled(final TypedArray typedArray){
+    protected boolean isSeekBarTouchEnabled(final TypedArray typedArray) {
         return typedArray.getBoolean(R.styleable.CrystalSeekbar_seek_bar_touch_enabled, false);
     }
 
@@ -473,8 +471,8 @@ public class CrystalSeekbar extends View {
         //normalizedMinValue = 0d;
         //normalizedMaxValue = 100d;
 
-        thumbWidth = (thumb != null) ? thumb.getWidth() : getResources().getDimension(R.dimen.thumb_width);
-        thumbHeight = (thumb != null) ? thumb.getHeight() : getResources().getDimension(R.dimen.thumb_height);
+        thumbWidth = (thumb != null) ? thumb.getIntrinsicWidth() : getResources().getDimension(R.dimen.thumb_width);
+        thumbHeight = (thumb != null) ? thumb.getIntrinsicHeight() : getResources().getDimension(R.dimen.thumb_height);
 
         barHeight = (thumbHeight * 0.5f) * 0.3f;
         barPadding = thumbWidth * 0.5f;
@@ -512,8 +510,9 @@ public class CrystalSeekbar extends View {
     // PROTECTED METHODS
     //////////////////////////////////////////
 
-    protected Bitmap getBitmap(Drawable drawable) {
-        return (drawable != null) ? ((BitmapDrawable) drawable).getBitmap() : null;
+    protected Drawable getBitmap(Drawable drawable) {
+//        return (drawable != null) ? ((BitmapDrawable) drawable).getBitmap() : null;
+        return drawable;
     }
 
     protected float getCornerRadius(final TypedArray typedArray) {
@@ -536,7 +535,7 @@ public class CrystalSeekbar extends View {
         return typedArray.getFloat(R.styleable.CrystalSeekbar_steps, NO_STEP);
     }
 
-    protected float getBarHeight(final TypedArray typedArray){
+    protected float getBarHeight(final TypedArray typedArray) {
         return typedArray.getDimensionPixelSize(R.styleable.CrystalSeekbar_bar_height, 0);
     }
 
@@ -676,7 +675,7 @@ public class CrystalSeekbar extends View {
         rectThumb.bottom = thumbHeight;
 
         if (thumb != null) {
-            Bitmap lThumb = (Thumb.MIN.equals(pressedThumb)) ? thumbPressed : thumb;
+            Drawable lThumb = (Thumb.MIN.equals(pressedThumb)) ? thumbPressed : thumb;
             drawLeftThumbWithImage(canvas, paint, rectThumb, lThumb);
         } else {
             drawLeftThumbWithColor(canvas, paint, rectThumb);
@@ -687,8 +686,9 @@ public class CrystalSeekbar extends View {
         canvas.drawOval(rect, paint);
     }
 
-    protected void drawLeftThumbWithImage(final Canvas canvas, final Paint paint, final RectF rect, final Bitmap image) {
-        canvas.drawBitmap(image, rect.left, rect.top, paint);
+    protected void drawLeftThumbWithImage(final Canvas canvas, final Paint paint, final RectF rect, final Drawable image) {
+        image.setBounds((int) rect.left, (int) rect.top, (int) rect.right, (int) rect.bottom);
+        image.draw(canvas);
     }
 
     protected void trackTouchEvent(MotionEvent event) {
