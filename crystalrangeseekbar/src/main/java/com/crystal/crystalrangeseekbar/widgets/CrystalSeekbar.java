@@ -136,7 +136,7 @@ public class CrystalSeekbar extends View {
         super(context, attrs, defStyleAttr);
 
         // prevent render is in edit mode
-        if (isInEditMode()) return;
+        //if (isInEditMode()) return;
 
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CrystalSeekbar);
         try {
@@ -853,7 +853,7 @@ public class CrystalSeekbar extends View {
         super.onDraw(canvas);
 
         // prevent render is in edit mode
-        if (isInEditMode()) return;
+        //if (isInEditMode()) return;
 
         // setup bar
         setupBar(canvas, _paint, _rect);

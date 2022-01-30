@@ -1,5 +1,6 @@
 package com.crystal.crystalrangeseekbar.widgets;
 
+import android.annotation.SuppressLint;
 import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Canvas;
@@ -12,6 +13,7 @@ import android.graphics.Shader;
 import android.graphics.drawable.Drawable;
 import android.util.AttributeSet;
 import android.util.Log;
+import android.view.HapticFeedbackConstants;
 import android.view.MotionEvent;
 import android.view.View;
 
@@ -144,7 +146,7 @@ public class CrystalRangeSeekbar extends View {
         super(context, attrs, defStyleAttr);
 
         // prevent render is in edit mode
-        if (isInEditMode()) return;
+        // if (isInEditMode()) return;
 
         TypedArray array = context.obtainStyledAttributes(attrs, R.styleable.CrystalRangeSeekbar);
         try {
@@ -1029,7 +1031,7 @@ public class CrystalRangeSeekbar extends View {
         super.onDraw(canvas);
 
         // prevent render is in edit mode
-        if (isInEditMode()) return;
+        // if (isInEditMode()) return;
 
         // setup bar
         setupBar(canvas, _paint, _rect);
@@ -1079,6 +1081,7 @@ public class CrystalRangeSeekbar extends View {
                 onStartTrackingTouch();
                 trackTouchEvent(event);
                 attemptClaimDrag();
+                performHapticFeedback(HapticFeedbackConstants.VIRTUAL_KEY);
 
                 break;
 
