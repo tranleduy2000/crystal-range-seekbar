@@ -4,8 +4,9 @@ import android.content.Context;
 import android.content.res.TypedArray;
 import android.graphics.Color;
 import android.graphics.drawable.Drawable;
-import android.support.v4.content.ContextCompat;
 import android.util.AttributeSet;
+
+import androidx.core.content.ContextCompat;
 
 import com.crystal.crystalrangeseekbar.R;
 

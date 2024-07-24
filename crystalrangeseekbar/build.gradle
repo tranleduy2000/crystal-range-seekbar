@@ -1,15 +1,18 @@
 apply plugin: 'com.android.library'
 
 android {
-    compileSdkVersion 33
+    compileSdk 34
+    namespace 'com.example.crystalrangeseekbar'
 
     defaultConfig {
-        minSdkVersion 15
-        targetSdkVersion 33
-        versionCode 1
-        versionName "1.0"
+        minSdkVersion 21
+        targetSdk 34
     }
+
     buildTypes {
+        debug {
+
+        }
         release {
             minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
@@ -19,5 +22,5 @@ android {
 
 dependencies {
     api fileTree(dir: 'libs', include: ['*.jar'])
-    api 'androidx.appcompat:appcompat:1.5.1'
+    api 'androidx.appcompat:appcompat:1.7.0'
 }

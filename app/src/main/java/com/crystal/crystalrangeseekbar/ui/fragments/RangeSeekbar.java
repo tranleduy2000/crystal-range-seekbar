@@ -3,7 +3,6 @@ package com.crystal.crystalrangeseekbar.ui.fragments;
 import android.graphics.Color;
 import android.os.Bundle;
 import android.os.Handler;
-import android.support.v4.app.Fragment;
 import android.util.Log;
 import android.view.InflateException;
 import android.view.LayoutInflater;
@@ -11,6 +10,8 @@ import android.view.View;
 import android.view.ViewGroup;
 import android.widget.RelativeLayout;
 import android.widget.TextView;
+
+import androidx.fragment.app.Fragment;
 
 import com.crystal.crystalrangeseekbar.R;
 import com.crystal.crystalrangeseekbar.interfaces.OnRangeSeekbarChangeListener;
