@@ -1,6 +1,7 @@
 package com.crystal.crystalrangeseekbar.ui.activities;
 
 import android.os.Bundle;
+import android.view.View;
 
 
 import androidx.annotation.Nullable;
@@ -30,8 +31,8 @@ public class RangeSlider extends AppCompatActivity {
         init();
     }
 
-    public final <T> T getView(int resId){
-        return (T)findViewById(resId);
+    public final <T extends View> T getView(int resId){
+        return findViewById(resId);
     }
 
     private void init(){

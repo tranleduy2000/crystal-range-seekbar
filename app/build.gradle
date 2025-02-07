@@ -1,24 +1,26 @@
 apply plugin: 'com.android.application'
 
 android {
-    compileSdk 34
+    compileSdk 35
     namespace 'com.crystal.crystalrangeseekbar'
 
     defaultConfig {
         applicationId "com.crystal.crystalrangeseekbar"
         minSdkVersion 21
-        targetSdk 34
+        targetSdk 35
         versionCode 1
         versionName "1.0"
     }
     buildTypes {
         debug {
-
         }
         release {
-            minifyEnabled false
             proguardFiles getDefaultProguardFile('proguard-android.txt'), 'proguard-rules.pro'
         }
+    }
+
+    buildFeatures {
+        buildConfig true
     }
 }
 
@@ -26,7 +28,7 @@ dependencies {
     implementation fileTree(dir: 'libs', include: ['*.jar'])
     implementation project(':crystalrangeseekbar')
 
-    def fragment_version = "1.8.1"
+    def fragment_version = "1.8.5"
 
     // Java language implementation
     implementation "androidx.fragment:fragment:$fragment_version"
